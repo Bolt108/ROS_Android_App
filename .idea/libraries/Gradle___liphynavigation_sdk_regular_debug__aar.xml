@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: :liphynavigation-sdk-regular-debug:@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/f407bbaae4b0410d39bb908fb59cc85a/jetified-liphynavigation-sdk-regular-debug/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/f407bbaae4b0410d39bb908fb59cc85a/jetified-liphynavigation-sdk-regular-debug/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/f407bbaae4b0410d39bb908fb59cc85a/jetified-liphynavigation-sdk-regular-debug/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/RosAndroid.iml" filepath="$PROJECT_DIR$/.idea/modules/RosAndroid.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/RosAndroid.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/RosAndroid.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/jcraft/RosAndroid.jcraft.iml" filepath="$PROJECT_DIR$/.idea/modules/jcraft/RosAndroid.jcraft.iml" />
+    </modules>
+  </component>
+</project>

@@ -20,7 +20,9 @@ import android.widget.TextView;
 //import androidx.annotation.Nullable;
 //import androidx.annotation.RequiresApi;
 
-import com.robotca.ControlApp.R;
+//import com.robotca.ControlApp.R;
+
+import com.schneewittchen.rosandroid.R;
 
 import java.util.ArrayList;
 
@@ -30,13 +32,13 @@ public class ICDCMapLayout extends FrameLayout {
 
     private static final boolean USE_ROS_RESOLUTION = false; // Keep it false for now
 
-    // Parameters for Infineon Map
-    private static final float MAP_WIDTH_IN_METERS = 19.902431f; // Calculate by Hand
-    private static final float MAP_HEIGHT_IN_METERS = 24.0991f; // Calculate by Hand
-    private static final float ORIGIN_ON_ROS_X = -13.6f;
-    private static final float ORIGIN_ON_ROS_Y = -12.5f;
-    private static final float RESOLUTION_ON_ROS = 0.02574786f; // meters/pixel
-    private static final int MAP = R.drawable.infineon;
+//    // Parameters for Infineon Map
+//    private static final float MAP_WIDTH_IN_METERS = 19.902431f; // Calculate by Hand
+//    private static final float MAP_HEIGHT_IN_METERS = 24.0991f; // Calculate by Hand
+//    private static final float ORIGIN_ON_ROS_X = -13.6f;
+//    private static final float ORIGIN_ON_ROS_Y = -12.5f;
+//    private static final float RESOLUTION_ON_ROS = 0.02574786f; // meters/pixel
+//    private static final int MAP = R.drawable.infineon;
 
     // Parameters for Office Map
 //    private static final float MAP_WIDTH_IN_METERS = 10.169f; // Not needed if using ROS Resolution
@@ -46,13 +48,14 @@ public class ICDCMapLayout extends FrameLayout {
 //    private static final float RESOLUTION_ON_ROS = 0.011556f; // meters/pixel
 //    private static final int MAP = R.drawable.map_office;
 
-    // Parameters for CYT Map
-//    private static final float MAP_WIDTH_IN_METERS = 21; // Calculate by Hand or measure
-//    private static final float MAP_HEIGHT_IN_METERS = 15; // Calculate by hand or measure
-//    private static final float ORIGIN_ON_ROS_X = -9.3f; // From YML file
-//    private static final float ORIGIN_ON_ROS_Y = -11.17f; // From YML file
-//    private static final float RESOLUTION_ON_ROS = 0.0179487f; // From YML file
-//    private static final int MAP = R.drawable.icdc_map;
+     //Parameters for CYT Map
+    private static final float MAP_WIDTH_IN_METERS = 21; // Calculate by Hand or measure
+    private static final float MAP_HEIGHT_IN_METERS = 15; // Calculate by hand or measure
+    private static final float ORIGIN_ON_ROS_X = -9.3f; // From YML file
+    private static final float ORIGIN_ON_ROS_Y = -11.17f; // From YML file
+    private static final float RESOLUTION_ON_ROS = 0.0179487f; // From YML file
+    private static final int MAP = R.drawable.icdc_map;
+
 
 
 
@@ -155,7 +158,8 @@ public class ICDCMapLayout extends FrameLayout {
         if(!flag){
 
             map=new ImgView(getContext());//创建自定义的ImgView类
-            map.setImageResource(MAP);//放入图片
+//            map.setImageResource(MAP);//放入图片
+            map.setImageResource(R.drawable.circle);
 
             //每个view都需要一个LayoutParams，告诉父容器的一些放入规则和方式
             LayoutParams lp_map=new LayoutParams(LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);//https://blog.csdn.net/u012810020/article/details/51970771

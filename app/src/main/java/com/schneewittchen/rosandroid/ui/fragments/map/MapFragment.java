@@ -1,4 +1,5 @@
 package com.schneewittchen.rosandroid.ui.fragments.map;
+
 import android.annotation.SuppressLint;
 import android.app.Fragment;
 import android.content.ComponentName;
@@ -10,29 +11,38 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Looper;
-import androidx.annotation.Nullable;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.constraintlayout.widget.ConstraintSet;
-//import androidx.ConstraintLayout;
-//import androidx.ConstraintSet;
-import android.transition.ChangeBounds;
-import android.transition.Transition;
-import android.transition.TransitionManager;
 import android.util.Log;
 import android.util.TypedValue;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.TextureView;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.WindowManager;
-import android.widget.Button;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.constraintlayout.widget.ConstraintSet;
+
+import com.liphy.navigation.IndoorLocation;
+import com.liphy.navigation.LatLngTranslator;
+import com.liphy.navigation.LiphyLocationService;
+import com.liphy.navigation.LiphyState;
+import com.liphy.navigation.bluetooth.BluetoothInfo;
+import com.parse.ParseObject;
+import com.schneewittchen.rosandroid.R;
+
+import org.osmdroid.events.MapEventsReceiver;
+import org.osmdroid.util.GeoPoint;
+import org.osmdroid.views.overlay.GroundOverlay;
+
+import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
+
+import geometry_msgs.Point;
+//import liphy.io.liphysdk.LightFlyCamera;
 
 //import com.liphy.navigation.IndoorLocation;
 //import com.liphy.navigation.LatLngTranslator;
@@ -47,46 +57,18 @@ import android.widget.Toast;
 //import com.robotca.ControlApp.Core.RobotController;
 //import com.robotca.ControlApp.R;
 //import com.robotca.ControlApp.liphy;
-
-import com.schneewittchen.rosandroid.R;
-
-import org.osmdroid.api.IMapController;
 //import org.osmdroid.bonuspack.overlays.GroundOverlay;
 //import org.osmdroid.bonuspack.overlays.MapEventsOverlay;
 //import org.osmdroid.bonuspack.overlays.MapEventsReceiver;
-import org.osmdroid.events.MapEventsReceiver;
 //import org.osmdroid.tixleprovider.tilesource.TileSourceFactory;
-import org.osmdroid.util.GeoPoint;
-import org.osmdroid.views.MapView;
-import org.osmdroid.views.overlay.GroundOverlay;
-import org.osmdroid.views.overlay.MapEventsOverlay;
-import org.osmdroid.views.overlay.mylocation.MyLocationNewOverlay;
-
-import java.util.ArrayList;
-import java.util.Timer;
-import java.util.TimerTask;
-
-import geometry_msgs.Point;
-import liphy.io.liphysdk.LightFlyCamera;
 //import timber.log.Timber;
-
-import com.liphy.navigation.IndoorLocation;
-import com.liphy.navigation.LatLngTranslator;
-import com.liphy.navigation.LiphyLocationService;
-import com.liphy.navigation.LiphyState;
-import com.liphy.navigation.bluetooth.BluetoothInfo;
-import com.liphy.navigation.network.LiphyCloudManager;
-import com.parse.ParseObject;
-import com.parse.ParseException;
-
-import static android.view.Gravity.END;
 
 /**
  * Fragment containing the Map screen showing the real-world position of the Robot.
  * 包含显示机器人真实位置的地图屏幕的碎片。
  *
  */
-public class MapFragment extends Fragment implements MapEventsReceiver, LiphyLocationService.OnLiphyServiceListener,LiphyLocationService.OnLiphyDeviceListener, LightFlyCamera.OnLightTrackedCallback {
+public class MapFragment extends Fragment implements MapEventsReceiver {
 
     //    private ConstraintLayout mapContainer;
 //    private ImageView user_icon;
@@ -112,7 +94,7 @@ public class MapFragment extends Fragment implements MapEventsReceiver, LiphyLoc
     private IndoorLocation lastLiphyLocation;
     private boolean isLiphyServiceBound = false;
     private static final float LIGHT_SIZE = 17.5f;
-    private LightFlyCamera lightFlyManager;
+    //private LightFlyCamera lightFlyManager;
     // x,y coordinate translated by nav sdk
     private TextView xCoorText;
     private TextView yCoorText;
@@ -130,7 +112,7 @@ public class MapFragment extends Fragment implements MapEventsReceiver, LiphyLoc
 
     // Log tag String
     private static final String TAG = "MapFragment";
-    private RobotController controller;
+//    private RobotController controller;
 
 //    private MyLocationNewOverlay myLocationOverlay;
 //    private MyLocationNewOverlay secondMyLocationOverlay;
@@ -160,26 +142,26 @@ public class MapFragment extends Fragment implements MapEventsReceiver, LiphyLoc
 
         textViewLog = (TextView) view.findViewById(R.id.textViewLog);
         textViewvlcLoc = (TextView) view.findViewById(R.id.textViewvlcLocMap);
-        LocationProvider locationProvider = ((ControlApp) getActivity()).getRobotController().LOCATION_PROVIDER;//通过localization provider来接收当前的位置信息
+        //LocationProvider locationProvider = ((ControlApp) getActivity()).getRobotController().LOCATION_PROVIDER;//通过localization provider来接收当前的位置信息
 
         //***************************************** self define   ***************************************************************************
 
 
         icdcmap=(ICDCMapLayout) view.findViewById(R.id.icdcmap);//地图
-        textureView = (TextureView) view.findViewById(R.id.textureView123);//这个必须有，不然可能跳出程序
-        lightFlyManager = LightFlyCamera.getCameraInstance(getActivity());
-        lightFlyManager.setTextureView(textureView);
-        lightFlyManager.setLightTrackedCallback(this);
-        lightFlyManager.setDrawOnTextureView(false);
-        lightFlyManager.useFrontCamera(true);
+//        textureView = (TextureView) view.findViewById(R.id.textureView123);//这个必须有，不然可能跳出程序
+//        lightFlyManager = LightFlyCamera.getCameraInstance(getActivity());
+//        lightFlyManager.setTextureView(textureView);
+//        lightFlyManager.setLightTrackedCallback(this);
+//        lightFlyManager.setDrawOnTextureView(false);
+//        lightFlyManager.useFrontCamera(true);
 
-        if(LIPHY_LOCATION_SERVICE_ENABLED){
-            if (getActivity() != null) {
-                Intent liphyLocationServiceIntent = new Intent(getActivity(), LiphyLocationService.class);
-                getActivity().bindService(liphyLocationServiceIntent, connection, Context.BIND_AUTO_CREATE);
-            } else {
-                Log.d("error", "getActivity() is null");
-            }
+//        if(LIPHY_LOCATION_SERVICE_ENABLED){
+//            if (getActivity() != null) {
+//                Intent liphyLocationServiceIntent = new Intent(getActivity(), LiphyLocationService.class);
+//                getActivity().bindService(liphyLocationServiceIntent, connection, Context.BIND_AUTO_CREATE);
+//            } else {
+//                Log.d("error", "getActivity() is null");
+//            }
         }
 
 
@@ -206,10 +188,12 @@ public class MapFragment extends Fragment implements MapEventsReceiver, LiphyLoc
             public void run() {
                 //the result of slo-vlp
                 try{
-                    Point robotlocalization=((ControlApp) getActivity()).getRobotController().getOdometry().getPose().getPose().getPosition();
-                    robotlocalization_x=robotlocalization.getX()*100;//the result of X cm
-                    robotlocalization_y=robotlocalization.getY()*100;//the result of y cm
+                    //Point robotlocalization=((ControlApp) getActivity()).getRobotController().getOdometry().getPose().getPose().getPosition();
+//                    robotlocalization_x=robotlocalization.getX()*100;//the result of X cm
+//                    robotlocalization_y=robotlocalization.getY()*100;//the result of y cm
 
+                    robotlocalization_x=1*100;//the result of X cm
+                    robotlocalization_y=1*100;//the result of y cm
                     robot_y=(int) robotlocalization_y;
                     robot_x=(int) robotlocalization_x;
 
@@ -358,27 +342,27 @@ public class MapFragment extends Fragment implements MapEventsReceiver, LiphyLoc
     @Override
     public void onStart() {
         super.onStart();
-        lightFlyManager.startTracking();
-        if(LIPHY_LOCATION_SERVICE_ENABLED){
-            if (isLiphyServiceBound) {
-                if (!liphyLocationService.isBluetoothRunning()) {
-                    liphyLocationService.startBluetoothSearch();
-                }
-            }
-        }
+        //lightFlyManager.startTracking();
+//        if(LIPHY_LOCATION_SERVICE_ENABLED){
+//            if (isLiphyServiceBound) {
+//                if (!liphyLocationService.isBluetoothRunning()) {
+//                    liphyLocationService.startBluetoothSearch();
+//                }
+//            }
+//        }
 
     }
 
     @Override
     public void onStop() {
         super.onStop();
-        lightFlyManager.stopTracking();
+        //lightFlyManager.stopTracking();
 
-        if(LIPHY_LOCATION_SERVICE_ENABLED){
-            if (isLiphyServiceBound) {
-                liphyLocationService.stopLocationProviders();
-            }
-        }
+//        if(LIPHY_LOCATION_SERVICE_ENABLED){
+//            if (isLiphyServiceBound) {
+//                liphyLocationService.stopLocationProviders();
+//            }
+//        }
 
     }
 
@@ -408,29 +392,29 @@ public class MapFragment extends Fragment implements MapEventsReceiver, LiphyLoc
      * @param geoPoint The point to place the marker
      * @return True
      */
-    @Override
-    public boolean longPressHelper(GeoPoint geoPoint) {
-
-        GroundOverlay myGroundOverlay = new GroundOverlay(getActivity());
-        myGroundOverlay.setPosition(geoPoint);
-        try {
-            //noinspection ConstantConditions,deprecation
-            myGroundOverlay.setImage(getResources().getDrawable(R.drawable.ic_flag_black_24dp).mutate());
-        }
-        catch (NullPointerException e) {
-            Log.e(TAG, "", e);
-        }
-        myGroundOverlay.setDimensions(25.0f);
-//        mapView.getOverlays().add(myGroundOverlay);
-//        mapView.postInvalidate();
-
-//        // keep storage of markers and current location
-//        waypoints.add(myLocationOverlay.getMyLocation());
-//        waypoints.add(geoPoint);
+//    @Override
+     public boolean longPressHelper(GeoPoint geoPoint) {
 //
-//        Toast.makeText(mapView.getContext(), "Marked on (" + geoPoint.getLatitude() + "," +
-//                geoPoint.getLongitude() + ")", Toast.LENGTH_LONG).show();
-
+//        GroundOverlay myGroundOverlay = new GroundOverlay(getActivity());
+//        myGroundOverlay.setPosition(geoPoint);
+//        try {
+//            //noinspection ConstantConditions,deprecation
+//            myGroundOverlay.setImage(getResources().getDrawable(R.drawable.ic_flag_black_24dp).mutate());
+//        }
+//        catch (NullPointerException e) {
+//            Log.e(TAG, "", e);
+//        }
+//        myGroundOverlay.setDimensions(25.0f);
+////        mapView.getOverlays().add(myGroundOverlay);
+////        mapView.postInvalidate();
+//
+////        // keep storage of markers and current location
+////        waypoints.add(myLocationOverlay.getMyLocation());
+////        waypoints.add(geoPoint);
+////
+////        Toast.makeText(mapView.getContext(), "Marked on (" + geoPoint.getLatitude() + "," +
+////                geoPoint.getLongitude() + ")", Toast.LENGTH_LONG).show();
+//
         return true;
     }
 
@@ -588,13 +572,13 @@ public class MapFragment extends Fragment implements MapEventsReceiver, LiphyLoc
 
 
     ////////////////////////////////////////****************************************************
-    @Override
-    public void onLatestLightIdReady(String s, ParseObject parseObject) {
-        /*latestLightId = s;
-        lightIdInQueue = true;
-        Log.v("LatestLightId",s);*/
-
-    }
+    //@Override
+//   public void onLatestLightIdReady(String s, ParseObject parseObject) {
+//        /*latestLightId = s;
+//        lightIdInQueue = true;
+//        Log.v("LatestLightId",s);*/
+//
+//    }
 
 //    @Override
 //    public void onLatestLightInfoReady(LightFlyCamera.LEDKeyPoint ledKeyPoint, ParseObject parseObject) {
@@ -620,55 +604,55 @@ public class MapFragment extends Fragment implements MapEventsReceiver, LiphyLoc
 ////        });
 //    }
 
-    @Override
-    public void onLatestBluetoothInfoLoaded(BluetoothInfo bluetoothInfo) {
-        Toast.makeText(getActivity(), bluetoothInfo.getBluetoothName(),Toast.LENGTH_LONG).show();
-    }
+    //@Override
+    //public void onLatestBluetoothInfoLoaded(BluetoothInfo bluetoothInfo) {
+//        Toast.makeText(getActivity(), bluetoothInfo.getBluetoothName(),Toast.LENGTH_LONG).show();
+//    }
 
-    @Override
-    public void didTrackLight(String lightId){
-        Log.v("LightFlySDKLightID",lightId);
-        latestLightId = lightId;
-        lightIdInQueue = true;
-    }
+//    @Override
+//    public void didTrackLight(String lightId){
+//        Log.v("LightFlySDKLightID",lightId);
+//        latestLightId = lightId;
+//        lightIdInQueue = true;
+//    }
 
-    @Override
-    public void onLocationUpdate(IndoorLocation location) {
+   // @Override
+    //public void onLocationUpdate(IndoorLocation location) {
 
-        if (location.getProvider().equals(getString(R.string.provider_bluetooth))) {
-            // enable pdr
-            LiphyState.setFirstSignalReceived(true);
-//            Timber.tag("location").d("LIPHY & PDR ENABLED BY BLUETOOTH");
-            return;
-        } else if (location.getProvider().equals(getString(R.string.provider_liphy))) {
-            // first liphy location set as origin
-            if (!LiphyState.isFirstLiphySignalReceived()) {
-//                coordinateInCm = new Pair<>(0.0, 0.0);
-                phone_x = 0;
-                phone_y = 0;
-                LiphyState.setFirstLiphySignalReceived(true);
-            }
+//        if (location.getProvider().equals(getString(R.string.provider_bluetooth))) {
+//            // enable pdr
+//            LiphyState.setFirstSignalReceived(true);
+////            Timber.tag("location").d("LIPHY & PDR ENABLED BY BLUETOOTH");
+//            return;
+//        } else if (location.getProvider().equals(getString(R.string.provider_liphy))) {
+//            // first liphy location set as origin
+//            if (!LiphyState.isFirstLiphySignalReceived()) {
+////                coordinateInCm = new Pair<>(0.0, 0.0);
+//                phone_x = 0;
+//                phone_y = 0;
+//                LiphyState.setFirstLiphySignalReceived(true);
+//            }
 
             /*
             delete this after the hardcoded table is done
              */
-            phone_x = 0;
-            phone_y = 0;
-
-
-            lastLiphyLocation = new IndoorLocation(getString(R.string.provider_liphy), location.getLatitude(),
-                    location.getLongitude(), location.getFloor(), location.getBuildingId(),
-                    location.getBuildingName(), location.getBearing(), location.getTime());
-
-        } else if (location.getProvider().equals(getString(R.string.provider_pdr))) {
-//            Timber.tag("location").d("bearing %f", location.getBearing());
-//            Timber.tag("location").d("length %f", Math.sin(Math.toRadians(location.getBearing())));
-
-            phone_x += LatLngTranslator.DEFAULT_STEP_DIST * 100 * Math.sin(Math.toRadians(location.getBearing()));
-            phone_y += LatLngTranslator.DEFAULT_STEP_DIST * 100 * Math.cos(Math.toRadians(location.getBearing()));
-        }
-
-    }
+//            phone_x = 0;
+//            phone_y = 0;
+//
+//
+//            lastLiphyLocation = new IndoorLocation(getString(R.string.provider_liphy), location.getLatitude(),
+//                    location.getLongitude(), location.getFloor(), location.getBuildingId(),
+//                    location.getBuildingName(), location.getBearing(), location.getTime());
+//
+//        } else if (location.getProvider().equals(getString(R.string.provider_pdr))) {
+////            Timber.tag("location").d("bearing %f", location.getBearing());
+////            Timber.tag("location").d("length %f", Math.sin(Math.toRadians(location.getBearing())));
+//
+//            phone_x += LatLngTranslator.DEFAULT_STEP_DIST * 100 * Math.sin(Math.toRadians(location.getBearing()));
+//            phone_y += LatLngTranslator.DEFAULT_STEP_DIST * 100 * Math.cos(Math.toRadians(location.getBearing()));
+//        }
+//
+//    }
 
     @Override
     public void onOrientationUpdate(float v) {
@@ -680,43 +664,43 @@ public class MapFragment extends Fragment implements MapEventsReceiver, LiphyLoc
 
     }
 
-    /**
-     * Defines callbacks for service binding, passed to bindService()
-     */
-    private final ServiceConnection connection = new ServiceConnection() {
-        @Override
-        public void onServiceConnected(ComponentName className, IBinder service) {
-            LiphyLocationService.LocalBinder binder = (LiphyLocationService.LocalBinder) service;
-            liphyLocationService = binder.getService();
-            liphyLocationService.getActivityAndTextureView(getActivity(), textureView);
-
-            // locaiton info callback
-            liphyLocationService.registerOnLiphyServiceListener(MapFragment.this);
-            // liphy & bluetooth callback
-            liphyLocationService.registerOnLiphyDeviceListener(MapFragment.this);
-
-//            liphyLocationService.setAccessKeyForLiphySdk();
-
-//            // start bluetooth (liphy will be started automatically)
-//            if (EasyPermissions.hasPermissions(RobotChooser.this, Manifest.permission.CAMERA,
-//            Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION)) {
-            if (LiphyState.isBluetoothSearch() && !liphyLocationService.isBluetoothRunning())
-                liphyLocationService.startBluetoothSearch();
-//            }
-
-//            Timber.tag("liphysdk").d("version: %s", liphyLocationService.liphySdkVersion());
-//            Timber.tag("liphysdk").d("build no.: %s", liphyLocationService.liphySdkBuildNumebr());
-//            Timber.tag("liphysdk").d("expiry date: %s", liphyLocationService.liphySdkExpiryDate());
-
-            isLiphyServiceBound = true;
-        }
-
-        @Override
-        public void onServiceDisconnected(ComponentName arg0) {
-            // see on destroyed
-            liphyLocationService.unregisterOnLiphyServiceListener();
-            liphyLocationService = null;
-            isLiphyServiceBound = false;
-        }
-    };
+//    /**
+//     * Defines callbacks for service binding, passed to bindService()
+//     */
+//    private final ServiceConnection connection = new ServiceConnection() {
+//        @Override
+//        public void onServiceConnected(ComponentName className, IBinder service) {
+//            LiphyLocationService.LocalBinder binder = (LiphyLocationService.LocalBinder) service;
+//            liphyLocationService = binder.getService();
+//            liphyLocationService.getActivityAndTextureView(getActivity(), textureView);
+//
+//            // locaiton info callback
+//            liphyLocationService.registerOnLiphyServiceListener(MapFragment.this);
+//            // liphy & bluetooth callback
+//            liphyLocationService.registerOnLiphyDeviceListener(MapFragment.this);
+//
+////            liphyLocationService.setAccessKeyForLiphySdk();
+//
+////            // start bluetooth (liphy will be started automatically)
+////            if (EasyPermissions.hasPermissions(RobotChooser.this, Manifest.permission.CAMERA,
+////            Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION)) {
+//            if (LiphyState.isBluetoothSearch() && !liphyLocationService.isBluetoothRunning())
+//                liphyLocationService.startBluetoothSearch();
+////            }
+//
+////            Timber.tag("liphysdk").d("version: %s", liphyLocationService.liphySdkVersion());
+////            Timber.tag("liphysdk").d("build no.: %s", liphyLocationService.liphySdkBuildNumebr());
+////            Timber.tag("liphysdk").d("expiry date: %s", liphyLocationService.liphySdkExpiryDate());
+//
+//            isLiphyServiceBound = true;
+//        }
+//
+//        @Override
+//        public void onServiceDisconnected(ComponentName arg0) {
+//            // see on destroyed
+//            liphyLocationService.unregisterOnLiphyServiceListener();
+//            liphyLocationService = null;
+//            isLiphyServiceBound = false;
+//        }
+//    };
 }

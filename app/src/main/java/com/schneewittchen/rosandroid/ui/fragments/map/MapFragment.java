@@ -1,15 +1,10 @@
 package com.schneewittchen.rosandroid.ui.fragments.map;
 
 import android.annotation.SuppressLint;
-import android.app.Fragment;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
-import android.content.ServiceConnection;
-import android.location.LocationProvider;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.IBinder;
 import android.os.Looper;
 import android.util.Log;
 import android.util.TypedValue;
@@ -19,11 +14,30 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.TextView;
-import android.widget.Toast;
+//import android.app.Fragment;
+//import android.content.ComponentName;
+//import android.content.Context;
+//import android.content.Intent;
+//import android.content.ServiceConnection;
+//import android.location.LocationProvider;
+//import android.os.Bundle;
+//import android.os.Handler;
+//import android.os.IBinder;
+//import android.os.Looper;
+//import android.util.Log;
+//import android.util.TypedValue;
+//import android.view.LayoutInflater;
+//import android.view.TextureView;
+//import android.view.View;
+//import android.view.ViewGroup;
+//import android.view.WindowManager;
+//import android.widget.TextView;
+//import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.ConstraintSet;
+import androidx.fragment.app.Fragment;
 
 import com.liphy.navigation.IndoorLocation;
 import com.liphy.navigation.LatLngTranslator;
@@ -136,32 +150,30 @@ public class MapFragment extends Fragment implements MapEventsReceiver {
 //        mapView = (MapView) view.findViewById(R.id.mapview);
         getActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
-
-
         //l
 
-        textViewLog = (TextView) view.findViewById(R.id.textViewLog);
-        textViewvlcLoc = (TextView) view.findViewById(R.id.textViewvlcLocMap);
+        //textViewLog = (TextView) view.findViewById(R.id.textViewLog);
+        //textViewvlcLoc = (TextView) view.findViewById(R.id.textViewvlcLocMap);
         //LocationProvider locationProvider = ((ControlApp) getActivity()).getRobotController().LOCATION_PROVIDER;//通过localization provider来接收当前的位置信息
 
         //***************************************** self define   ***************************************************************************
 
 
         icdcmap=(ICDCMapLayout) view.findViewById(R.id.icdcmap);//地图
-//        textureView = (TextureView) view.findViewById(R.id.textureView123);//这个必须有，不然可能跳出程序
-//        lightFlyManager = LightFlyCamera.getCameraInstance(getActivity());
-//        lightFlyManager.setTextureView(textureView);
+        textureView = (TextureView) view.findViewById(R.id.textureView123);//这个必须有，不然可能跳出程序
+        //lightFlyManager = LightFlyCamera.getCameraInstance(getActivity());
+       //lightFlyManager.setTextureView(textureView);
 //        lightFlyManager.setLightTrackedCallback(this);
 //        lightFlyManager.setDrawOnTextureView(false);
 //        lightFlyManager.useFrontCamera(true);
 
-//        if(LIPHY_LOCATION_SERVICE_ENABLED){
-//            if (getActivity() != null) {
-//                Intent liphyLocationServiceIntent = new Intent(getActivity(), LiphyLocationService.class);
-//                getActivity().bindService(liphyLocationServiceIntent, connection, Context.BIND_AUTO_CREATE);
-//            } else {
-//                Log.d("error", "getActivity() is null");
-//            }
+        if(LIPHY_LOCATION_SERVICE_ENABLED){
+            if (getActivity() != null) {
+                Intent liphyLocationServiceIntent = new Intent(getActivity(), LiphyLocationService.class);
+                //getActivity().bindService(liphyLocationServiceIntent, connection, Context.BIND_AUTO_CREATE);
+            } else {
+                Log.d("error", "getActivity() is null");
+            }
         }
 
 
@@ -213,29 +225,29 @@ public class MapFragment extends Fragment implements MapEventsReceiver {
                         @Override
                         public void run() {
                             icdcmap.updateRobotIcon(robot_x,-robot_y); // y coordinate is in opposite direction on phone
-                            //icdcmap.updateUserIcon(robot_y+20,-robot_x-20);
-                            if(lightIdInQueue){
-                                if(!lastMappedId.equals(latestLightId)){
-
-                                    for(int i = 0; i < icdcmap.lightMarkersList.size(); i++){
-                                        if(icdcmap.lightMarkersList.get(i).lightId.equals(latestLightId)){
-                                            if(!icdcmap.lightMarkersList.get(i).installed){ // if it is not installed
-                                                icdcmap.add_light_hotspot(latestLightId,robot_x,-robot_y);
-                                                lightIdInQueue = false;
-                                                lastMappedId = latestLightId;
-                                                vlcMapLocString = "ID:"+latestLightId+" @ "+String.valueOf((float)Math.round(robotlocalization_x*10)/10)+","+String.valueOf((float)Math.round(robotlocalization_y*10)/10)+"\n"+vlcMapLocString;
-                                                textViewvlcLoc.setText(vlcMapLocString);
-                                            }
-                                        }
-                                    }
-
-
-
-                                }else{
-                                    lightIdInQueue = false;
-                                }
-
-                            }
+                            icdcmap.updateUserIcon(robot_y+20,-robot_x-20);
+//                            if(lightIdInQueue){
+//                                if(!lastMappedId.equals(latestLightId)){
+//
+//                                    for(int i = 0; i < icdcmap.lightMarkersList.size(); i++){
+//                                        if(icdcmap.lightMarkersList.get(i).lightId.equals(latestLightId)){
+//                                            if(!icdcmap.lightMarkersList.get(i).installed){ // if it is not installed
+//                                                icdcmap.add_light_hotspot(latestLightId,robot_x,-robot_y);
+//                                                lightIdInQueue = false;
+//                                                lastMappedId = latestLightId;
+//                                                vlcMapLocString = "ID:"+latestLightId+" @ "+String.valueOf((float)Math.round(robotlocalization_x*10)/10)+","+String.valueOf((float)Math.round(robotlocalization_y*10)/10)+"\n"+vlcMapLocString;
+//                                                textViewvlcLoc.setText(vlcMapLocString);
+//                                            }
+//                                        }
+//                                    }
+//
+//
+//
+//                                }else{
+//                                    lightIdInQueue = false;
+//                                }
+//
+//                            }
                             //countTest++;
                             //textViewLog.setText(robotLocString);
                             textViewLog.setText("Receiving Location");
@@ -654,12 +666,12 @@ public class MapFragment extends Fragment implements MapEventsReceiver {
 //
 //    }
 
-    @Override
+    //@Override
     public void onOrientationUpdate(float v) {
 
     }
 
-    @Override
+    //@Override
     public void onCompassAccuracyChanged(int i) {
 
     }

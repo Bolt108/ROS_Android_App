@@ -7,10 +7,11 @@
     android:rotation="0">
 
     <!--    下面的是必须有的，没有的话，会报错。不能invisible-->
+
     <TextureView
         android:id="@+id/textureView123"
-        android:layout_width="1pt"
-        android:layout_height="1pt"
+        android:layout_width="307dp"
+        android:layout_height="361dp"
         android:layout_gravity="center_horizontal|center_vertical">
 
     </TextureView>
@@ -36,7 +37,7 @@
 
     <TextView
         android:id="@+id/textViewvlcLocMap"
-        android:layout_width="wrap_content"
+        android:layout_width="43dp"
         android:layout_height="wrap_content"
         android:layout_gravity="right"
         android:layout_marginTop="60dp"

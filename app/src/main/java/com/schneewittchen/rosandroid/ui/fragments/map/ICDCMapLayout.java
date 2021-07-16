@@ -88,11 +88,11 @@ public class ICDCMapLayout extends FrameLayout {
     public ICDCMapLayout(@NonNull Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
     }
-
-    public ICDCMapLayout(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr);
-    }
-
+//
+//    public ICDCMapLayout(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+//        super(context, attrs, defStyleAttr);
+//    }
+//
 //    public ICDCMapLayout(@NonNull Context context) {
 //        super(context);
 //    }
@@ -142,8 +142,8 @@ public class ICDCMapLayout extends FrameLayout {
         Log.v("MapParameters","MapIntrinsicHeight:"+String.valueOf(map.getDrawable().getIntrinsicHeight()));
         Log.v("MapParameters","MapIntrinsicWidth:"+String.valueOf(map.getDrawable().getIntrinsicWidth()));
 
-*/
 
+        */
 
         return false;
     }
@@ -158,8 +158,8 @@ public class ICDCMapLayout extends FrameLayout {
         if(!flag){
 
             map=new ImgView(getContext());//创建自定义的ImgView类
-//            map.setImageResource(MAP);//放入图片
-            map.setImageResource(R.drawable.circle);
+            map.setImageResource(MAP);//放入图片
+            //map.setImageResource(R.drawable.circle);
 
             //每个view都需要一个LayoutParams，告诉父容器的一些放入规则和方式
             LayoutParams lp_map=new LayoutParams(LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);//https://blog.csdn.net/u012810020/article/details/51970771
@@ -172,7 +172,7 @@ public class ICDCMapLayout extends FrameLayout {
             map.setScaleType(ImgView.ScaleType.FIT_CENTER);//  不按比例缩放图片，目标是把图片塞满整个View
             // 如果设置为FIT_CENTER，则是把图片按比例扩大/缩小到View的宽度，居中显示
 
-            addView(map/*,lp_map*/);
+            addView(map,lp_map);
 
             addLightMakersOnMap(20); // add 20 light markers to the map
 
@@ -186,8 +186,8 @@ public class ICDCMapLayout extends FrameLayout {
             lp_icon.width=66;
             robot_icon.setLayoutParams(lp_icon);
             //将起始点定位00
-//            robot_icon.setY(map.getY()+map_x);
-//            robot_icon.setX(map.getX()+map_y);
+            robot_icon.setY(map.getY()+map_x);
+            robot_icon.setX(map.getX()+map_y);
 
 
             addView(robot_icon);
@@ -244,23 +244,30 @@ public class ICDCMapLayout extends FrameLayout {
         return origin_x_pixels + displacement + (int) mapPixelBounds.left + (int)map.getX();
     }
 
-    public int translateYfromROSmapCoordinates(float y){
+    public int translateYfromROSmapCoordinates(float y) {
         RectF mapPixelBounds = new RectF();
+
+
+
         Drawable drawable = map.getDrawable();
         map.getImageMatrix().mapRect(mapPixelBounds, new RectF(drawable.getBounds()));
-        // First covert the y scale from pixels into meters
-        // Here Maps Y axis direction is different between ROS and Android
-        float yPixelsPerCentiMeters;
-        if(USE_ROS_RESOLUTION){
-            yPixelsPerCentiMeters = 1/(RESOLUTION_ON_ROS*100);
-        }else{
-            yPixelsPerCentiMeters = ((mapPixelBounds.bottom - mapPixelBounds.top)/(MAP_HEIGHT_IN_METERS*100));
-        }
 
-        int displacement = (int) (y * yPixelsPerCentiMeters); // Displacement in pixels from origin
-        int origin_y_pixels = (int) (((MAP_HEIGHT_IN_METERS-Math.abs(ORIGIN_ON_ROS_Y))*100)*yPixelsPerCentiMeters);
-        return origin_y_pixels + displacement + (int) mapPixelBounds.top + (int)map.getY();
+
+            // First covert the y scale from pixels into meters
+            // Here Maps Y axis direction is different between ROS and Android
+            float yPixelsPerCentiMeters;
+            if (USE_ROS_RESOLUTION) {
+                yPixelsPerCentiMeters = 1 / (RESOLUTION_ON_ROS * 100);
+            } else {
+                yPixelsPerCentiMeters = ((mapPixelBounds.bottom - mapPixelBounds.top) / (MAP_HEIGHT_IN_METERS * 100));
+            }
+
+            int displacement = (int) (y * yPixelsPerCentiMeters); // Displacement in pixels from origin
+            int origin_y_pixels = (int) (((MAP_HEIGHT_IN_METERS - Math.abs(ORIGIN_ON_ROS_Y)) * 100) * yPixelsPerCentiMeters);
+            return origin_y_pixels + displacement + (int) mapPixelBounds.top + (int) map.getY();
+
     }
+
 
 
 
@@ -289,7 +296,7 @@ public class ICDCMapLayout extends FrameLayout {
         hotpspotImageView.setY(map.getY()+map_x-(x));
         hotpspotImageView.setX(map.getX()+map_y-(y));
 
-        addView(hotpspotImageView)*/;
+        addView(hotpspotImageView)*/
 
     }
 

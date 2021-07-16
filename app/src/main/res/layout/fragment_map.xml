@@ -22,6 +22,11 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom">
 
+        <ImageButton
+            android:id="@+id/imageButton2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/marker_default" />
     </com.schneewittchen.rosandroid.ui.fragments.map.ICDCMapLayout>
 
     <TextView

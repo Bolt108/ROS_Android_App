@@ -94,7 +94,6 @@ public class MainFragment extends Fragment implements OnBackPressedListener {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 Log.i(TAG, "On Tab selected: " + tab.getText());
-
                 switch (tab.getText().toString()) {
                     case "Master":
                         navController.navigate(R.id.action_to_masterFragment);
@@ -110,6 +109,7 @@ public class MainFragment extends Fragment implements OnBackPressedListener {
                         break;
                     case "Home":
                         navController.navigate(R.id.action_to_homePageFragment);
+                        break;
                     default:
                         navController.navigate(R.id.action_to_vizFragment);
                 }

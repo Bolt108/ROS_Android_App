@@ -9,7 +9,7 @@
         android:id="@+id/textView3"
         android:layout_width="182dp"
         android:layout_height="99dp"
-        android:text="cock."
+        android:text="home."
         app:autoSizeTextType="uniform"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

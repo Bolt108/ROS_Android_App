@@ -92,8 +92,7 @@
     <fragment
         android:id="@+id/homePageFragment"
         android:name="com.schneewittchen.rosandroid.ui.fragments.HomePage.HomePageFragment"
-        android:label="HomePageFragment"
-        tools:layout="@layout/fragment_home_page" />
+        android:label="HomePageFragment" />
 
     <action
         android:id="@+id/action_to_homePageFragment"

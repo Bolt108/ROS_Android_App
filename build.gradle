@@ -7,7 +7,6 @@ buildscript {
 
     repositories {
         google()
-        jcenter()
         flatDir {
             dirs 'libs'
         }
@@ -29,12 +28,21 @@ subprojects {
                 exclude "META-INF/LICENSE.txt"
                 exclude "META-INF/NOTICE.txt"
             }
+            // Configure only for each module that uses Java 8
+            // language features (either in its source code or
+            // through dependencies).
+            compileOptions {
+                sourceCompatibility = JavaVersion.VERSION_1_8
+                targetCompatibility = JavaVersion.VERSION_1_8
+            }
+
         }
     }
 }
 
 allprojects {
     repositories {
+        jcenter()
         google()
         maven { url 'https://repo1.maven.org/maven2' }
 

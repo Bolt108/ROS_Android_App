@@ -1,5 +1,11 @@
 apply plugin: 'com.android.application'
 
+def secretPropertiesFile = rootProject.file("./secret.properties")
+def secretProperties = new Properties()
+secretProperties.load(new FileInputStream(secretPropertiesFile))
+
+def buildType
+
 android {
     compileSdkVersion 30
     buildToolsVersion "29.0.3"
@@ -17,6 +23,12 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            manifestPlaceholders = ["appid": secretProperties['appid'], "secret": secretProperties['secret']]
+        }
+
+        debug {
+            manifestPlaceholders = ["appid": secretProperties['appid'], "secret": secretProperties['secret']]
+
         }
     }
 
@@ -28,11 +40,15 @@ android {
     viewBinding {
         enabled = true
     }
+    buildFeatures {
+        viewBinding true
+    }
 }
 
 dependencies {
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     //    // liphy
 //    implementation 'com.google.android.gms:play-services-vision:17.0.2'
 //    implementation 'com.google.zxing:core:3.2.1'
@@ -42,6 +58,8 @@ dependencies {
 //     compile 'com.jakewharton.timber:timber:4.5.0'  //对应timber.log.Timber
     implementation 'com.parse:parse-android:1.15.8'
 
+    // mapxus
+    implementation "com.mapxus.map:mapxusmap:4.2.4"
 
     implementation 'androidx.appcompat:appcompat:1.3.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'

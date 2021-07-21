@@ -9,12 +9,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
+import com.mapbox.mapboxsdk.maps.MapView;
+import com.mapbox.mapboxsdk.maps.MapboxMapOptions;
+//import com.mapxus.map.mapxusmap.impl.SupportMapxusMapFragment;
+import com.mapxus.map.mapxusmap.impl.SupportMapxusMapFragment;
 import com.schneewittchen.rosandroid.R;
 import com.schneewittchen.rosandroid.ui.fragments.intro.IntroFragment;
 import com.schneewittchen.rosandroid.ui.fragments.main.MainFragment;
 import com.schneewittchen.rosandroid.ui.fragments.main.OnBackPressedListener;
-
 
 /**
  * TODO: Description
@@ -33,10 +37,10 @@ public class MainActivity extends AppCompatActivity {
     private static final int LOCATION_PERM = 101;
 
 
+    SupportMapxusMapFragment mapFragment;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_main);
 
         try {
@@ -93,5 +97,4 @@ public class MainActivity extends AppCompatActivity {
                 !pref.getBoolean("CheckedIn", false);
 
     }
-
 }

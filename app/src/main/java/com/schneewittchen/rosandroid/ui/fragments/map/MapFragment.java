@@ -40,22 +40,16 @@ import androidx.constraintlayout.widget.ConstraintSet;
 import androidx.fragment.app.Fragment;
 
 import com.liphy.navigation.IndoorLocation;
-import com.liphy.navigation.LatLngTranslator;
 import com.liphy.navigation.LiphyLocationService;
-import com.liphy.navigation.LiphyState;
-import com.liphy.navigation.bluetooth.BluetoothInfo;
-import com.parse.ParseObject;
 import com.schneewittchen.rosandroid.R;
+import com.schneewittchen.rosandroid.ui.activity.ICDCMapLayout;
 
 import org.osmdroid.events.MapEventsReceiver;
 import org.osmdroid.util.GeoPoint;
-import org.osmdroid.views.overlay.GroundOverlay;
 
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
-
-import geometry_msgs.Point;
 //import liphy.io.liphysdk.LightFlyCamera;
 
 //import com.liphy.navigation.IndoorLocation;
@@ -82,7 +76,9 @@ import geometry_msgs.Point;
  * 包含显示机器人真实位置的地图屏幕的碎片。
  *
  */
-public class MapFragment extends Fragment implements MapEventsReceiver {
+public class
+MapFragment extends Fragment implements MapEventsReceiver {
+
 
     //    private ConstraintLayout mapContainer;
 //    private ImageView user_icon;
@@ -159,7 +155,7 @@ public class MapFragment extends Fragment implements MapEventsReceiver {
         //***************************************** self define   ***************************************************************************
 
 
-        icdcmap=(ICDCMapLayout) view.findViewById(R.id.icdcmap);//地图
+//        icdcmap=(ICDCMapLayout) view.findViewById(R.id.icdcmap);//地图
         textureView = (TextureView) view.findViewById(R.id.textureView123);//这个必须有，不然可能跳出程序
         //lightFlyManager = LightFlyCamera.getCameraInstance(getActivity());
        //lightFlyManager.setTextureView(textureView);

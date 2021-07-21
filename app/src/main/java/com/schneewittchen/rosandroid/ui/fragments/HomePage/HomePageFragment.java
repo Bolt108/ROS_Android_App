@@ -11,8 +11,15 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import com.schneewittchen.rosandroid.R;
+import com.schneewittchen.rosandroid.ui.fragments.map.MapxusFragment;
+
+import java.util.Map;
 
 public class HomePageFragment extends Fragment {
     
@@ -33,7 +40,15 @@ public class HomePageFragment extends Fragment {
         testButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                testButton.setText("Penis boy");
+                Log.d(TAG, "onClick: Clicked button");
 
+                MapxusFragment mapFrag = new MapxusFragment();
+                FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
+                transaction.replace(R.id.main_container, mapFrag);
+                transaction.commit();
+
+                Log.d(TAG, "onClick: Clicked button AGAIN");
             }
         });
         return currentView;

@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.mapbox.mapboxsdk.maps.MapView;
@@ -16,6 +17,7 @@ import com.mapbox.mapboxsdk.maps.MapboxMapOptions;
 //import com.mapxus.map.mapxusmap.impl.SupportMapxusMapFragment;
 import com.mapxus.map.mapxusmap.impl.SupportMapxusMapFragment;
 import com.schneewittchen.rosandroid.R;
+import com.schneewittchen.rosandroid.ui.fragments.HomePage.HomePageFragment;
 import com.schneewittchen.rosandroid.ui.fragments.intro.IntroFragment;
 import com.schneewittchen.rosandroid.ui.fragments.main.MainFragment;
 import com.schneewittchen.rosandroid.ui.fragments.main.OnBackPressedListener;
@@ -42,6 +44,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        HomePageFragment homeFrag = new HomePageFragment();
+        FragmentManager fm = getSupportFragmentManager();
+        fm.beginTransaction().add(R.id.main_container, homeFrag).commit();
 
         try {
             if (savedInstanceState == null && requiresIntro()) {

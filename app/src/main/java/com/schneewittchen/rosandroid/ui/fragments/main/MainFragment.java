@@ -68,7 +68,6 @@ public class MainFragment extends Fragment implements OnBackPressedListener {
         drawerLayout = view.findViewById(R.id.drawer_layout);
 
         navController = Navigation.findNavController(requireActivity(), R.id.fragment_container);
-
         drawerLayout.setScrimColor(getResources().getColor(R.color.drawerFadeColor));
 
         // Connect toolbar to application

@@ -5,6 +5,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,11 +20,23 @@ public class HomePageFragment extends Fragment {
     
     public static HomePageFragment newInstance() {return new HomePageFragment();}
 
+    Button testButton;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_home_page, container, false);
+
+        View currentView = inflater.inflate(R.layout.fragment_home_page, container, false);
+
+        testButton = currentView.findViewById(R.id.testButton);
+        testButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+        return currentView;
     }
 
     @Override

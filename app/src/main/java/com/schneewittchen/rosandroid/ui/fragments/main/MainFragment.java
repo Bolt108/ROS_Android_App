@@ -108,6 +108,8 @@ public class MainFragment extends Fragment implements OnBackPressedListener {
                     case "Map":
                         navController.navigate(R.id.action_to_mapFragment);
                         break;
+                    case "Home":
+                        navController.navigate(R.id.action_to_homePageFragment);
                     default:
                         navController.navigate(R.id.action_to_vizFragment);
                 }

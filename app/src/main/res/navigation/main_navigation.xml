@@ -89,5 +89,16 @@
         app:popUpTo="@id/main_navigation"
         app:popUpToInclusive="true" />
 
+    <fragment
+        android:id="@+id/homePageFragment"
+        android:name="com.schneewittchen.rosandroid.ui.fragments.homePage.homePageFragment"
+        android:label="HomePageFragment"
+        tools:layout="@layout/fragment_home_page" />
+
+    <action
+        android:id="@+id/action_to_homePageFragment"
+        app:destination="@id/homePageFragment"
+        app:popUpTo="@id/main_navigation"
+        app:popUpToInclusive="true" />
 
 </navigation>

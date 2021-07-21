@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_navigation"
-    app:startDestination="@id/mapFragment">
+    app:startDestination="@id/mapxusFragment">
 
 
     <fragment
@@ -76,15 +76,18 @@
         android:name="com.schneewittchen.rosandroid.ui.fragments.details.DetailContentFragment"
         android:label="DetailGroupOverviewFragment"
         tools:layout="@layout/fragment_detail_content" />
+
     <fragment
-        android:id="@+id/mapFragment"
-        android:name="com.schneewittchen.rosandroid.ui.fragments.map.MapFragment"
-        android:label="MapFragment"
-        tools:layout="@layout/fragment_map"/>
+        android:id="@+id/mapxusFragment"
+        android:name="com.schneewittchen.rosandroid.ui.fragments.map.MapxusFragment"
+        android:label="MapxusFragment"
+        tools:layout="@layout/fragment_mapxus_map"/>
+
     <action
         android:id="@+id/action_to_mapFragment"
-        app:destination="@id/mapFragment"
+        app:destination="@id/mapxusFragment"
         app:popUpTo="@id/main_navigation"
         app:popUpToInclusive="true" />
+
 
 </navigation>

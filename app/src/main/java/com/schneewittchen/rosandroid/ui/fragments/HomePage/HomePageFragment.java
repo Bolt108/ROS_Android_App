@@ -29,6 +29,11 @@ public class HomePageFragment extends Fragment {
 
     Button testButton;
 
+    @Override
+    public void onCreate(@Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -40,23 +45,10 @@ public class HomePageFragment extends Fragment {
         testButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                testButton.setText("Penis boy");
-                Log.d(TAG, "onClick: Clicked button");
-
-                MapxusFragment mapFrag = new MapxusFragment();
-                FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
-                transaction.replace(R.id.main_container, mapFrag);
-                transaction.commit();
-
-                Log.d(TAG, "onClick: Clicked button AGAIN");
+                testButton.setText("poo");
             }
         });
         return currentView;
-    }
-
-    @Override
-    public void onCreate(@Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
     }
 
     @Override

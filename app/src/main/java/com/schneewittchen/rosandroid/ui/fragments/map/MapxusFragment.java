@@ -9,6 +9,7 @@ import android.widget.Button;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.mapbox.mapboxsdk.camera.CameraUpdate;
 import com.mapbox.mapboxsdk.camera.CameraUpdateFactory;
@@ -55,9 +56,6 @@ public class MapxusFragment extends Fragment implements OnMapReadyCallback, OnMa
         mapViewProvider = new MapboxMapViewProvider(requireActivity(), mapView);
         mapViewProvider.getMapxusMapAsync(this);
 
-        homeButton = new TabButton(v.findViewById(R.id.home_button_mapxus));
-        homeButton.linkToFragment(0, getParentFragmentManager().beginTransaction());
-
         return v;
     }
 
@@ -89,7 +87,15 @@ public class MapxusFragment extends Fragment implements OnMapReadyCallback, OnMa
     }
 
     @Override
+    public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        homeButton = new TabButton(view.findViewById(R.id.home_button_mapxus));
+        homeButton.linkToFragment(0, getParentFragmentManager().beginTransaction());
+    }
+
+    @Override
     public void onMapxusMapReady(MapxusMap mapxusMap) {
         this.mapxusMap = mapxusMap;
     }
 }
+

@@ -16,30 +16,19 @@ import com.schneewittchen.rosandroid.ui.fragments.map.MapxusFragment;
 
 import org.jetbrains.annotations.NotNull;
 
+import com.schneewittchen.rosandroid.ui.general.TabButton;
+
 public class SettingsFragment extends Fragment {
 
-    Button auto_nav;
     @Nullable
     @org.jetbrains.annotations.Nullable
     @Override
     public View onCreateView(@NonNull @NotNull LayoutInflater inflater, @Nullable @org.jetbrains.annotations.Nullable ViewGroup container, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_home, container, false);
+        View v = inflater.inflate(R.layout.fragment_settings, container, false);
 
-        auto_nav = v.findViewById(R.id.auto_nav);
-        auto_nav.setOnClickListener(new View.OnClickListener() {
+        TabButton homeButton = new TabButton(v.findViewById(R.id.home_button));
+        homeButton.linkToFragment(0, getParentFragmentManager().beginTransaction());
 
-            @Override
-            public void onClick(View v) {
-
-                MapxusFragment mapxusFrag = new MapxusFragment();
-                FragmentTransaction ft = getParentFragmentManager().beginTransaction();
-                ft.replace(R.id.main_container, mapxusFrag);
-                ft.commit();
-
-            }
-        }
-
-        );
         return v;
     }
 

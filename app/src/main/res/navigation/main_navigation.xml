@@ -101,5 +101,17 @@
         app:popUpTo="@id/main_navigation"
         app:popUpToInclusive="true" />
 
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.schneewittchen.rosandroid.ui.fragments.settings.SettingsFragment"
+        android:label="SettingsFragment"
+        tools:layout="@layout/fragment_settings"/>
+
+    <action
+        android:id="@+id/action_to_settingsFragment"
+        app:destination="@id/settingsFragment"
+        app:popUpTo="@id/main_navigation"
+        app:popUpToInclusive="true" />
+
 
 </navigation>

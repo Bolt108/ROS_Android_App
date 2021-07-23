@@ -21,16 +21,18 @@ import com.schneewittchen.rosandroid.ui.general.TabButton;
 
 public class HomeFragment extends Fragment {
 
+    private static TabButton auto_nav, settings;
+
     @Nullable
     @org.jetbrains.annotations.Nullable
     @Override
     public View onCreateView(@NonNull @NotNull LayoutInflater inflater, @Nullable @org.jetbrains.annotations.Nullable ViewGroup container, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_home, container, false);
 
-        TabButton auto_nav = new TabButton(v.findViewById(R.id.auto_nav));
+        auto_nav = new TabButton(v.findViewById(R.id.auto_nav));
         auto_nav.linkToFragment(1, getParentFragmentManager().beginTransaction());
 
-        TabButton settings = new TabButton(v.findViewById(R.id.settings));
+        settings = new TabButton(v.findViewById(R.id.settings));
         settings.linkToFragment(2, getParentFragmentManager().beginTransaction());
 
         return v;

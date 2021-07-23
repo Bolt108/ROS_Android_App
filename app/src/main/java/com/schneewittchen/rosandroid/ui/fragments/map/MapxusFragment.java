@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -23,12 +24,17 @@ import com.schneewittchen.rosandroid.R;
 
 import org.jetbrains.annotations.NotNull;
 
+import com.schneewittchen.rosandroid.ui.fragments.home.HomeFragment;
+import com.schneewittchen.rosandroid.ui.general.TabButton;
+
 public class MapxusFragment extends Fragment implements OnMapReadyCallback, OnMapxusMapReadyCallback {
 
     MapView mapView;
     MapViewProvider mapViewProvider;
     MapxusMap mapxusMap;
     MapboxMap mapboxMap;
+
+    private static TabButton homeButton;
 
     @Override
     public void onCreate(@Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
@@ -48,6 +54,9 @@ public class MapxusFragment extends Fragment implements OnMapReadyCallback, OnMa
 
         mapViewProvider = new MapboxMapViewProvider(requireActivity(), mapView);
         mapViewProvider.getMapxusMapAsync(this);
+
+        homeButton = new TabButton(v.findViewById(R.id.home_button_mapxus));
+        homeButton.linkToFragment(0, getParentFragmentManager().beginTransaction());
 
         return v;
     }

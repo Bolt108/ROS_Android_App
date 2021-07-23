@@ -54,6 +54,8 @@ public class TabButton {
                     case 2:
                         stfg = new SettingsFragment();
                         ft.replace(R.id.main_container, stfg);
+                        btn.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, R.drawable.ic_settings)
+
                     case 3:
                         msfg = new MasterFragment();
                         ft.replace(R.id.main_container, msfg);

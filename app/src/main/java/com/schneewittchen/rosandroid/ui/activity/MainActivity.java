@@ -4,6 +4,10 @@ import android.Manifest;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+<<<<<<< Updated upstream
+=======
+import android.view.View;
+>>>>>>> Stashed changes
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -11,8 +15,6 @@ import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.mapbox.mapboxsdk.maps.MapView;
-import com.mapbox.mapboxsdk.maps.MapboxMapOptions;
 //import com.mapxus.map.mapxusmap.impl.SupportMapxusMapFragment;
 import com.mapxus.map.mapxusmap.impl.SupportMapxusMapFragment;
 import com.schneewittchen.rosandroid.R;
@@ -97,4 +99,25 @@ public class MainActivity extends AppCompatActivity {
                 !pref.getBoolean("CheckedIn", false);
 
     }
+<<<<<<< Updated upstream
+=======
+    public void goToMapFragment(View view) {
+
+        if(view.getId() == R.id.btn1){
+            MapxusFragment mapxusFrag = new MapxusFragment();
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.main_container, mapxusFrag);
+            fragmentTransaction.addToBackStack(null);
+
+            fragmentTransaction.commit();
+
+        }
+//        MapxusFragment mapxusFrag = new MapxusFragment();
+//        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+//        ft.replace(R.id.main_container, mapxusFrag);
+//        ft.commit();
+
+    }
+>>>>>>> Stashed changes
 }

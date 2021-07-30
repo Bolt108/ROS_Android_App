@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
     public static String TAG = MainActivity.class.getSimpleName();
     private static final int LOCATION_PERM = 101;
 
+    private static HomeFragment homeFragment;
 
     SupportMapxusMapFragment mapFragment;
     @Override
@@ -68,9 +69,12 @@ public class MainActivity extends AppCompatActivity {
         }
 
         this.requestPermissions();
-        HomeFragment homeFrag = new HomeFragment();
+
+        if (homeFragment == null) {
+            homeFragment = new HomeFragment();
+        }
         FragmentManager fm = getSupportFragmentManager();
-        fm.beginTransaction().add(R.id.main_container, homeFrag).commit();
+        fm.beginTransaction().add(R.id.main_container, homeFragment).commit();
     }
 
     @Override

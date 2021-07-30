@@ -4,11 +4,14 @@ import android.Manifest;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.mapbox.mapboxsdk.maps.MapView;
@@ -16,9 +19,11 @@ import com.mapbox.mapboxsdk.maps.MapboxMapOptions;
 //import com.mapxus.map.mapxusmap.impl.SupportMapxusMapFragment;
 import com.mapxus.map.mapxusmap.impl.SupportMapxusMapFragment;
 import com.schneewittchen.rosandroid.R;
+import com.schneewittchen.rosandroid.ui.fragments.home.HomeFragment;
 import com.schneewittchen.rosandroid.ui.fragments.intro.IntroFragment;
 import com.schneewittchen.rosandroid.ui.fragments.main.MainFragment;
 import com.schneewittchen.rosandroid.ui.fragments.main.OnBackPressedListener;
+import com.schneewittchen.rosandroid.ui.fragments.map.MapxusFragment;
 
 /**
  * TODO: Description
@@ -36,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
     public static String TAG = MainActivity.class.getSimpleName();
     private static final int LOCATION_PERM = 101;
 
+    private static HomeFragment homeFragment;
 
     SupportMapxusMapFragment mapFragment;
     @Override
@@ -63,6 +69,12 @@ public class MainActivity extends AppCompatActivity {
         }
 
         this.requestPermissions();
+
+        if (homeFragment == null) {
+            homeFragment = new HomeFragment();
+        }
+        FragmentManager fm = getSupportFragmentManager();
+        fm.beginTransaction().add(R.id.main_container, homeFragment).commit();
     }
 
     @Override
@@ -95,6 +107,24 @@ public class MainActivity extends AppCompatActivity {
 
         return (pref.getInt("VersionNumber", 0) != getPackageManager().getPackageInfo(getPackageName(),0).versionCode) ||
                 !pref.getBoolean("CheckedIn", false);
+
+    }
+    public void goToMapFragment(View view) {
+
+        if(view.getId() == R.id.auto_nav){
+            MapxusFragment mapxusFrag = new MapxusFragment();
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.main_container, mapxusFrag);
+            fragmentTransaction.addToBackStack(null);
+
+            fragmentTransaction.commit();
+
+        }
+//        MapxusFragment mapxusFrag = new MapxusFragment();
+//        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+//        ft.replace(R.id.main_container, mapxusFrag);
+//        ft.commit();
 
     }
 }

@@ -7,7 +7,7 @@ public class App extends android.app.Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        MapxusMapContext.init(getApplicationContext());//, "com.liphy.light.android.app", "/I3eV0lc");
+        MapxusMapContext.init(getApplicationContext());
 
     }
 }

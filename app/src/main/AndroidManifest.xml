@@ -19,6 +19,8 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning"
         tools:replace="android:icon">
+        <activity android:name=".ui.activity.mapxusActivity"></activity>
+        <activity android:name=".ui.activity.homeActivity" />
 
         <meta-data
             android:name="com.mapxus.api.v1.appid"
@@ -37,8 +39,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
 
         <service android:name=".model.repositories.rosRepo.node.NodeMainExecutorService">
             <intent-filter>

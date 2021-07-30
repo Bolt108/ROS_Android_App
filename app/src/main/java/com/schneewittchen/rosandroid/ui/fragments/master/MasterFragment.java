@@ -27,6 +27,7 @@ import com.schneewittchen.rosandroid.viewmodel.MasterViewModel;
 
 import java.util.ArrayList;
 
+import com.schneewittchen.rosandroid.ui.general.TabButton;
 
 /**
  * TODO: Description
@@ -65,6 +66,9 @@ public class MasterFragment extends Fragment implements TextView.OnEditorActionL
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         binding = FragmentMasterBinding.inflate(inflater, container, false);
+
+        TabButton backButton = new TabButton(binding.getRoot().findViewById(R.id.back_button));
+        backButton.linkToFragment(2, getParentFragmentManager().beginTransaction());
 
         return binding.getRoot();
     }

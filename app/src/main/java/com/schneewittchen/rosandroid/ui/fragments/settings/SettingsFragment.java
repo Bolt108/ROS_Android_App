@@ -29,6 +29,9 @@ public class SettingsFragment extends Fragment {
         TabButton homeButton = new TabButton(v.findViewById(R.id.home_button));
         homeButton.linkToFragment(0, getParentFragmentManager().beginTransaction());
 
+        TabButton masterButton = new TabButton(v.findViewById(R.id.master_button));
+        masterButton.linkToFragment(3, getParentFragmentManager().beginTransaction());
+
         return v;
     }
 

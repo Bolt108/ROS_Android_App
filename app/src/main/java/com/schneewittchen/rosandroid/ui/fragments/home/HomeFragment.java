@@ -1,6 +1,7 @@
 package com.schneewittchen.rosandroid.ui.fragments.home;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,18 +24,20 @@ public class HomeFragment extends Fragment {
 
     private static TabButton auto_nav, settings;
 
+    final public static String TAG = HomeFragment.class.getSimpleName();
+
     @Nullable
     @org.jetbrains.annotations.Nullable
     @Override
     public View onCreateView(@NonNull @NotNull LayoutInflater inflater, @Nullable @org.jetbrains.annotations.Nullable ViewGroup container, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_home, container, false);
-
+        Log.d(TAG, "onCreateView: HOMEFRAGMENT CREATED. DICK AND BALLS INCL UDED. ");
         auto_nav = new TabButton(v.findViewById(R.id.auto_nav));
         auto_nav.linkToFragment(1, getParentFragmentManager().beginTransaction());
 
         settings = new TabButton(v.findViewById(R.id.settings));
         settings.linkToFragment(2, getParentFragmentManager().beginTransaction());
-
+        
         return v;
     }
 

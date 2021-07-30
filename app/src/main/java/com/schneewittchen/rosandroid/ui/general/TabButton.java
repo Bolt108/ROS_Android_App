@@ -38,26 +38,18 @@ public class TabButton {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                HomeFragment hmfg;
-                MapxusFragment mxfg;
-                SettingsFragment stfg;
-                MasterFragment msfg;
                 switch (FragmentType) {
                     case 0:
-                        hmfg = new HomeFragment();
-                        ft.replace(R.id.main_container, hmfg);
+                        ft.replace(R.id.main_container, new HomeFragment());
                         break;
                     case 1:
-                        mxfg = new MapxusFragment();
-                        ft.replace(R.id.main_container, mxfg);
+                        ft.replace(R.id.main_container, new MapxusFragment());
                         break;
                     case 2:
-                        stfg = new SettingsFragment();
-                        ft.replace(R.id.main_container, stfg);
+                        ft.replace(R.id.main_container, new SettingsFragment());
                         break;
                     case 3:
-                        msfg = new MasterFragment();
-                        ft.replace(R.id.main_container, msfg);
+                        ft.replace(R.id.main_container, new MasterFragment());
                         break;
                     default:
                         Log.e(TAG, "onClick: Fragment type invalid.");

@@ -4,6 +4,12 @@ import android.Manifest;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+<<<<<<< Updated upstream
+=======
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+>>>>>>> Stashed changes
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -42,7 +48,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        if (homeFragment == null) {
+            homeFragment = new HomeFragment();
+        }
         try {
             if (savedInstanceState == null && requiresIntro()) {
                 getSupportFragmentManager().beginTransaction()
@@ -53,8 +61,11 @@ public class MainActivity extends AppCompatActivity {
                 setSupportActionBar(myToolbar);
 
                 if (savedInstanceState == null) {
+                    
+                    if(homeFragment == null) Log.d(TAG, "onCreate: goddamn balls");
+                    
                     getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.main_container, MainFragment.newInstance())
+                        .replace(R.id.main_container, homeFragment)
                         .commitNow();
                 }
             }
@@ -63,6 +74,12 @@ public class MainActivity extends AppCompatActivity {
         }
 
         this.requestPermissions();
+<<<<<<< Updated upstream
+=======
+
+//        FragmentManager fm = getSupportFragmentManager();
+//        fm.beginTransaction().add(R.id.main_container, homeFragment).commit();
+>>>>>>> Stashed changes
     }
 
     @Override

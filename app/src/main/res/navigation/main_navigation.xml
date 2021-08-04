@@ -84,10 +84,43 @@
         tools:layout="@layout/fragment_mapxus_map"/>
 
     <action
-        android:id="@+id/action_to_mapFragment"
+        android:id="@+id/action_to_mapxusFragment"
         app:destination="@id/mapxusFragment"
         app:popUpTo="@id/main_navigation"
         app:popUpToInclusive="true" />
 
+<<<<<<< Updated upstream
+=======
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.schneewittchen.rosandroid.ui.fragments.home.HomeFragment"
+        android:label="HomeFragment"
+        tools:layout="@layout/fragment_home">
+
+        <action
+            android:id="@+id/action_homeFragment_to_mapxusFragment"
+            app:destination="@id/mapxusFragment"
+            app:popUpTo="@id/main_navigation"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <action
+        android:id="@+id/action_to_homeFragment"
+        app:destination="@id/homeFragment"
+        app:popUpTo="@id/main_navigation"
+        app:popUpToInclusive="true" />
+
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.schneewittchen.rosandroid.ui.fragments.settings.SettingsFragment"
+        android:label="SettingsFragment"
+        tools:layout="@layout/fragment_settings"/>
+
+    <action
+        android:id="@+id/action_to_settingsFragment"
+        app:destination="@id/settingsFragment"
+        app:popUpTo="@id/main_navigation"
+        app:popUpToInclusive="true" />
+>>>>>>> Stashed changes
 
 </navigation>

@@ -20,6 +20,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -68,7 +69,6 @@ public class MainFragment extends Fragment implements OnBackPressedListener {
         drawerLayout = view.findViewById(R.id.drawer_layout);
 
         navController = Navigation.findNavController(requireActivity(), R.id.fragment_container);
-
         drawerLayout.setScrimColor(getResources().getColor(R.color.drawerFadeColor));
 
         // Connect toolbar to application
@@ -105,8 +105,13 @@ public class MainFragment extends Fragment implements OnBackPressedListener {
                     case "SSH":
                         navController.navigate(R.id.action_to_sshFragment);
                         break;
+<<<<<<< Updated upstream
                     case "Map":
                         navController.navigate(R.id.action_to_mapFragment);
+=======
+                    case "Home":
+                        navController.navigate(R.id.action_to_homeFragment);
+>>>>>>> Stashed changes
                         break;
                     default:
                         navController.navigate(R.id.action_to_vizFragment);
@@ -168,6 +173,6 @@ public class MainFragment extends Fragment implements OnBackPressedListener {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_main, container, false);
+        return inflater.inflate(R.layout.fragment_home, container, false);
     }
 }

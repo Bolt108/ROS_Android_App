@@ -8,6 +8,12 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+<<<<<<< Updated upstream
+=======
+import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+>>>>>>> Stashed changes
 
 import com.mapbox.mapboxsdk.camera.CameraUpdate;
 import com.mapbox.mapboxsdk.camera.CameraUpdateFactory;
@@ -30,6 +36,12 @@ public class MapxusFragment extends Fragment implements OnMapReadyCallback, OnMa
     MapxusMap mapxusMap;
     MapboxMap mapboxMap;
 
+<<<<<<< Updated upstream
+=======
+    private TabButton homeButton;
+
+
+>>>>>>> Stashed changes
     @Override
     public void onCreate(@Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -80,6 +92,15 @@ public class MapxusFragment extends Fragment implements OnMapReadyCallback, OnMa
     }
 
     @Override
+<<<<<<< Updated upstream
+=======
+    public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+    }
+
+    @Override
+>>>>>>> Stashed changes
     public void onMapxusMapReady(MapxusMap mapxusMap) {
         this.mapxusMap = mapxusMap;
     }

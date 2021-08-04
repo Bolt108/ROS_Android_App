@@ -16,6 +16,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.textfield.TextInputLayout;
@@ -66,6 +67,12 @@ public class MasterFragment extends Fragment implements TextView.OnEditorActionL
                              @Nullable Bundle savedInstanceState) {
         binding = FragmentMasterBinding.inflate(inflater, container, false);
 
+<<<<<<< Updated upstream
+=======
+        TabButton backButton = new TabButton(Navigation.findNavController(requireActivity(), R.id.fragment_container), binding.getRoot().findViewById(R.id.back_button));
+        backButton.linkToFragment(2);
+
+>>>>>>> Stashed changes
         return binding.getRoot();
     }
 

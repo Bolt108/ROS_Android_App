@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_navigation"
-    app:startDestination="@id/mapxusFragment">
+    app:startDestination="@id/homeFragment">
 
 
     <fragment
@@ -86,6 +86,30 @@
     <action
         android:id="@+id/action_to_mapFragment"
         app:destination="@id/mapxusFragment"
+        app:popUpTo="@id/main_navigation"
+        app:popUpToInclusive="true" />
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.schneewittchen.rosandroid.ui.fragments.home.HomeFragment"
+        android:label="HomeFragment"
+        tools:layout="@layout/fragment_home"/>
+
+    <action
+        android:id="@+id/action_to_homeFragment"
+        app:destination="@id/homeFragment"
+        app:popUpTo="@id/main_navigation"
+        app:popUpToInclusive="true" />
+
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.schneewittchen.rosandroid.ui.fragments.settings.SettingsFragment"
+        android:label="SettingsFragment"
+        tools:layout="@layout/fragment_settings"/>
+
+    <action
+        android:id="@+id/action_to_settingsFragment"
+        app:destination="@id/settingsFragment"
         app:popUpTo="@id/main_navigation"
         app:popUpToInclusive="true" />
 

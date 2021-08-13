@@ -4,7 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF">
+    android:background="#E5E5E5">
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:background="#e2c239"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/auto_nav2"
@@ -44,6 +54,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
+    
+
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/auto_nav"
         android:layout_width="200dp"
@@ -53,11 +65,12 @@
         android:background="@drawable/round_big_button"
         android:gravity="center_horizontal|top"
         android:onClick="goToMapFragment"
+        android:src="@drawable/icons8"
         app:iconSize="120dp"
+        app:layout_constraintBottom_toTopOf="@id/auto_nav3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/auto_nav2"
-        app:layout_constraintBottom_toTopOf="@id/auto_nav3"/>
+        app:layout_constraintTop_toBottomOf="@id/auto_nav2" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/auto_nav5"
@@ -77,17 +90,30 @@
         android:id="@+id/home_page_title"
         android:layout_width="261dp"
         android:layout_height="121dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="16dp"
         android:fontFamily="sans-serif-medium"
         android:gravity="left"
         android:lineSpacingExtra="-7dp"
         android:text="Wheelchair Dashboard"
-        android:textColor="#e2c239"
+        android:textColor="#F9F9F9"
         android:textSize="40sp"
         android:typeface="sans"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.323"
+        app:layout_constraintHorizontal_bias="0.191"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Where to go today?"
+        android:layout_marginTop="112dp"
+        android:layout_marginLeft="20dp"
+        android:textSize="15sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        tools:layout_editor_absoluteX="22dp"
+        tools:layout_editor_absoluteY="110dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

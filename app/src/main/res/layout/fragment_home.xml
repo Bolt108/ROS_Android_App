@@ -8,24 +8,22 @@
 
     <TextView
         android:id="@+id/home_page_title2"
-        android:layout_width="96dp"
-        android:layout_height="53dp"
-        android:layout_marginLeft="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:elevation="10dp"
         android:fontFamily="sans-serif-medium"
         android:gravity="left"
         android:lineSpacingExtra="-7dp"
         android:text="GO"
-        android:layout_marginTop="700dp"
-        app:layout_constraintBottom_toTopOf="@id/auto_nav"
+        android:layout_marginBottom="20dp"
+        android:layout_marginEnd="7dp"
+        app:layout_constraintBottom_toBottomOf="@id/auto_nav"
+        app:layout_constraintStart_toStartOf="@id/auto_nav"
         android:textColor="#000000"
         android:textSize="40sp"
         android:typeface="sans"
-
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.534"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="@id/auto_nav"
+        app:layout_constraintHorizontal_bias="0.534" />
 
     <View
         android:id="@+id/view"
@@ -147,11 +145,11 @@
         android:id="@+id/textView13"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="272dp"
+        android:layout_marginRight="12dp"
         android:layout_marginTop="108dp"
         android:text="AUGUST 2021"
         android:textSize="20sp"
-        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView

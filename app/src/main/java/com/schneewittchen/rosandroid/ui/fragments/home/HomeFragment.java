@@ -41,7 +41,7 @@ public class HomeFragment extends Fragment {
 
         (robotArm = new TabButton(v.findViewById(R.id.robotArm))).linkToFragment(6, getParentFragmentManager().beginTransaction());
 
-        (manualControl = new TabButton(v.findViewById(R.id.manualControl))).linkToFragment(7, getParentFragmentManager().beginTransaction());
+        //(manualControl = new TabButton(v.findViewById(R.id.manualControl))).linkToFragment(7, getParentFragmentManager().beginTransaction());
 
         return v;
     }

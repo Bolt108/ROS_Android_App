@@ -4,7 +4,36 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF">
+    android:background="#C0C0C0">
+
+    <TextView
+        android:id="@+id/home_page_title2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="10dp"
+        android:fontFamily="sans-serif-medium"
+        android:gravity="left"
+        android:lineSpacingExtra="-7dp"
+        android:text="GO"
+        android:layout_marginBottom="20dp"
+        android:layout_marginEnd="7dp"
+        app:layout_constraintBottom_toBottomOf="@id/auto_nav"
+        app:layout_constraintStart_toStartOf="@id/auto_nav"
+        android:textColor="#000000"
+        android:textSize="40sp"
+        android:typeface="sans"
+        app:layout_constraintEnd_toEndOf="@id/auto_nav"
+        app:layout_constraintHorizontal_bias="0.534" />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:background="#e2c239"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/joystick"
@@ -13,9 +42,9 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="184dp"
         android:background="@drawable/round_button"
-        android:onClick="goToMapFragment"
+        android:drawableTop="@drawable/joystick"
         android:textColorLink="#1e90ff"
-        app:icon="@drawable/gps"
+        app:icon="@drawable/joystick"
         app:iconSize="75dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -28,18 +57,20 @@
         android:layout_marginBottom="28dp"
         android:background="@drawable/round_button"
         android:onClick="goToMapFragment"
+        android:drawableTop="@drawable/settings"
         app:iconSize="75dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/shc"
+        android:id="@+id/robotArm"
         android:layout_width="109dp"
         android:layout_height="109dp"
         android:layout_marginStart="32dp"
         android:layout_marginBottom="28dp"
         android:background="@drawable/round_button"
         android:onClick="goToMapFragment"
+        android:drawableTop="@drawable/robotarm"
         app:iconSize="75dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -51,22 +82,27 @@
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
         android:background="@drawable/round_big_button"
-        android:gravity="center_horizontal|top"
         android:onClick="goToMapFragment"
+        android:drawableTop="@drawable/icons8"
+        android:padding="30dp"
         app:iconSize="120dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/joystick"
-        app:layout_constraintBottom_toTopOf="@id/shc"/>
+        app:layout_constraintBottom_toTopOf="@id/robotArm"/>
+=======
+        app:layout_constraintTop_toBottomOf="@id/auto_nav2" />
+>>>>>>> origin/prof_demo_home
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/robotArm"
+        android:id="@+id/shc"
         android:layout_width="109dp"
         android:layout_height="109dp"
         android:layout_marginTop="184dp"
         android:layout_marginEnd="32dp"
         android:background="@drawable/round_button"
         android:onClick="goToMapFragment"
+        android:drawableTop="@drawable/smarthome"
         android:textColorLink="#FFEB3B"
         app:icon="@drawable/gps"
         app:iconSize="75dp"
@@ -76,18 +112,59 @@
     <TextView
         android:id="@+id/home_page_title"
         android:layout_width="261dp"
-        android:layout_height="121dp"
-        android:layout_marginTop="28dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="16dp"
         android:fontFamily="sans-serif-medium"
         android:gravity="left"
         android:lineSpacingExtra="-7dp"
         android:text="Wheelchair Dashboard"
-        android:textColor="#e2c239"
+        android:textColor="#F9F9F9"
         android:textSize="40sp"
         android:typeface="sans"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.323"
+        app:layout_constraintHorizontal_bias="0.1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/home_page_title3"
+        android:layout_width="114dp"
+        android:layout_height="115dp"
+        android:layout_marginTop="6dp"
+        android:fontFamily="sans-serif-medium"
+        android:gravity="left"
+        android:lineSpacingExtra="-7dp"
+        android:text="13"
+        android:textColor="#F9F9F9"
+        android:textSize="80sp"
+        android:typeface="sans"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.956"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="108dp"
+        android:layout_marginRight="32dp"
+        android:text="AUGUST 2021"
+        android:textSize="20sp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView17"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Where to go today?"
+        android:textSize="15sp"
+        app:layout_constraintStart_toStartOf="@id/home_page_title"
+        app:layout_constraintTop_toBottomOf="@id/home_page_title" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+<!--    android:layout_marginStart="280dp"-->
+<!--    android:layout_margin="112dp"-->

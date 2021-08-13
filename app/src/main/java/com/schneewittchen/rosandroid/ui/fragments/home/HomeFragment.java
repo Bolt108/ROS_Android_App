@@ -22,7 +22,7 @@ import com.schneewittchen.rosandroid.ui.general.TabButton;
 
 public class HomeFragment extends Fragment {
 
-    private static TabButton auto_nav, settings;
+    private static TabButton autoNav, settings, joystick, shc, robotArm;
 
     final public static String TAG = HomeFragment.class.getSimpleName();
 
@@ -31,9 +31,16 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull @NotNull LayoutInflater inflater, @Nullable @org.jetbrains.annotations.Nullable ViewGroup container, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_home, container, false);
-        Log.d(TAG, "onCreateView: HOMEFRAGMENT CREATED. DICK AND BALLS INCL UDED. ");
+        Log.d(TAG, "onCreateView: HOMEFRAGMENT CREATED. DICK AND BALLS INCLUDED. ");
 
-        
+        (autoNav = new TabButton(v.findViewById(R.id.auto_nav))).linkToFragment(1, getParentFragmentManager().beginTransaction());
+
+        (settings = new TabButton(v.findViewById(R.id.settings))).linkToFragment(2, getParentFragmentManager().beginTransaction());
+
+        (shc = new TabButton(v.findViewById(R.id.shc))).linkToFragment(5, getParentFragmentManager().beginTransaction());
+
+        (robotArm = new TabButton(v.findViewById(R.id.robotArm))).linkToFragment(6, getParentFragmentManager().beginTransaction());
+
         return v;
     }
 

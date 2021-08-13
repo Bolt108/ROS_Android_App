@@ -113,5 +113,16 @@
         app:popUpTo="@id/main_navigation"
         app:popUpToInclusive="true" />
 
+    <fragment
+        android:id="@+id/smartHomeControl"
+        android:name="com.schneewittchen.rosandroid.ui.fragments.smartHomeControl.SmartHomeControlFragment"
+        android:label="SmartHomeControlFragment"
+        tools:layout="@layout/fragment_smart_home_control"/>
+
+    <action
+        android:id="@+id/action_to_smartHomeControlFragment"
+        app:destination="@id/smartHomeControl"
+        app:popUpTo="@id/main_navigation"
+        app:popUpToInclusive="true" />
 
 </navigation>

@@ -1,4 +1,4 @@
-package com.schneewittchen.rosandroid.ui.fragments.settings;
+package com.schneewittchen.rosandroid.ui.fragments.robotarm;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

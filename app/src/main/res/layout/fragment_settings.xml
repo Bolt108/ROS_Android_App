@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    =======
+=======
     android:layout_height="match_parent"
     android:background="#C0C0C0">
-    >>>>>>> origin/prof_demo_homePage
+>>>>>>> origin/prof_demo_homePage
 
     <TextView
         android:id="@+id/textView3"
@@ -15,48 +15,64 @@
         android:layout_height="0dp"
         android:layout_marginStart="60dp"
         android:layout_marginTop="140dp"
+        android:layout_marginBottom="225dp"
         android:text="@string/settings"
         app:autoSizeTextType="uniform"
+        app:layout_constraintBottom_toTopOf="@+id/ssh_button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-    =======
-    android:layout_height="19dp"
-    android:text="@string/settings"
-    app:autoSizeTextType="uniform"
-    tools:layout_editor_absoluteX="60dp"
-    tools:layout_editor_absoluteY="58dp" />
-    >>>>>>> origin/prof_demo_homePage
+=======
+        android:layout_height="19dp"
+        android:text="@string/settings"
+        app:autoSizeTextType="uniform"
+        tools:layout_editor_absoluteX="60dp"
+        tools:layout_editor_absoluteY="58dp" />
+>>>>>>> origin/prof_demo_homePage
 
     <Button
         android:id="@+id/home_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
+<<<<<<< HEAD
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:text="@string/home"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" /><![CDATA[
+        app:layout_constraintTop_toTopOf="parent"
+        />
 
+    <Button
+        android:id="@+id/master_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="77dp"
+        android:layout_marginBottom="333dp"
+        android:text="Connect to Server"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
-
-    =======
+    <Button
+        android:id="@+id/ssh_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="44dp"
+        android:layout_marginBottom="254dp"
+        android:text="Connect to Wheelchair"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+=======
         android:drawableLeft="@drawable/home_icon"
         android:text="Home"
         tools:layout_editor_absoluteX="10dp"
         tools:layout_editor_absoluteY="10dp" />
 
-
-
-    ]]>
-
     <View
         android:id="@+id/view"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginBottom="10dp"
+        android:layout_height="150dp"
         android:background="#808080"
-        app:layout_constraintBottom_toTopOf="@+id/switch1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -65,70 +81,53 @@
     <Button
         android:id="@+id/master_button"
         android:layout_width="222dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="224dp"
+        android:layout_height="58dp"
         android:text="Connect to Server"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ssh_button" />
+        tools:layout_editor_absoluteX="88dp"
+        tools:layout_editor_absoluteY="449dp" />
 
     <Button
         android:id="@+id/ssh_button"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="71dp"
-        android:layout_marginEnd="71dp"
+        android:layout_width="268dp"
+        android:layout_height="64dp"
         android:text="Connect to Wheelchair"
-        app:layout_constraintBottom_toTopOf="@+id/master_button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/language_button" />
+        tools:layout_editor_absoluteX="71dp"
+        tools:layout_editor_absoluteY="385dp" />
 
     <Button
         android:id="@+id/language_button"
         android:layout_width="136dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="121dp"
+        android:layout_height="57dp"
         android:text="English/中文"
-        app:layout_constraintBottom_toTopOf="@+id/ssh_button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/switch1" />
+        tools:layout_editor_absoluteX="137dp"
+        tools:layout_editor_absoluteY="207dp" />
 
     <Switch
-        android:id="@+id/switch10"
+        android:id="@+id/switch1"
+        android:textColor="#242424"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="1dp"
-        android:layout_marginEnd="11dp"
         android:checked="true"
         android:switchMinWidth="56dp"
         android:text="Notifications"
-        android:textColor="#242424"
         android:textOff="OFF"
         android:textOn="ON"
-        app:layout_constraintEnd_toStartOf="@+id/switch1"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        tools:layout_editor_absoluteX="60dp"
+        tools:layout_editor_absoluteY="160dp" />
 
     <Switch
         android:id="@+id/switch1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
+        android:textColor="#242424"
         android:checked="true"
         android:switchMinWidth="56dp"
         android:text="Sound Effects"
-        android:textColor="#242424"
         android:textOff="OFF"
         android:textOn="ON"
-        app:layout_constraintBottom_toTopOf="@+id/language_button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/switch10"
-        app:layout_constraintTop_toBottomOf="@+id/view" />
+        tools:layout_editor_absoluteX="207dp"
+        tools:layout_editor_absoluteY="160dp" />
 
-    >>>>>>> origin/prof_demo_homePage
+>>>>>>> origin/prof_demo_homePage
 
 </androidx.constraintlayout.widget.ConstraintLayout>

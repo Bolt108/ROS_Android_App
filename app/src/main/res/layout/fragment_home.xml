@@ -110,7 +110,7 @@
     <TextView
         android:id="@+id/home_page_title"
         android:layout_width="261dp"
-        android:layout_height="121dp"
+        android:layout_height="100dp"
         android:layout_marginTop="16dp"
         android:fontFamily="sans-serif-medium"
         android:gravity="left"
@@ -120,7 +120,7 @@
         android:textSize="40sp"
         android:typeface="sans"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.191"
+        app:layout_constraintHorizontal_bias="0.1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -128,7 +128,7 @@
         android:id="@+id/home_page_title3"
         android:layout_width="114dp"
         android:layout_height="115dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="6dp"
         android:fontFamily="sans-serif-medium"
         android:gravity="left"
         android:lineSpacingExtra="-7dp"
@@ -145,8 +145,8 @@
         android:id="@+id/textView13"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="12dp"
         android:layout_marginTop="108dp"
+        android:layout_marginRight="32dp"
         android:text="AUGUST 2021"
         android:textSize="20sp"
         app:layout_constraintRight_toRightOf="parent"
@@ -156,11 +156,13 @@
         android:id="@+id/textView17"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="28dp"
-        android:layout_marginTop="108dp"
         android:text="Where to go today?"
         android:textSize="15sp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="@id/home_page_title"
+        app:layout_constraintTop_toBottomOf="@id/home_page_title" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+<!--    android:layout_marginStart="280dp"-->
+<!--    android:layout_margin="112dp"-->

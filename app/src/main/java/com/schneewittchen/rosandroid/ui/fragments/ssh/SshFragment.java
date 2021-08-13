@@ -74,8 +74,8 @@ public class SshFragment extends Fragment implements TextView.OnEditorActionList
 
     @Override
     public void onDestroyView() {
+//        setConnectionData();
         super.onDestroyView();
-        setConnectionData();
         binding = null;
     }
 

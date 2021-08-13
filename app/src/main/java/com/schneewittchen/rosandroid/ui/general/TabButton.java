@@ -13,7 +13,9 @@ import com.schneewittchen.rosandroid.ui.fragments.home.HomeFragment;
 import com.schneewittchen.rosandroid.ui.fragments.map.MapxusFragment;
 import com.schneewittchen.rosandroid.ui.fragments.master.MasterFragment;
 import com.schneewittchen.rosandroid.ui.fragments.settings.SettingsFragment;
+import com.schneewittchen.rosandroid.ui.fragments.smartHomeControl.SmartHomeControlFragment;
 import com.schneewittchen.rosandroid.ui.fragments.ssh.SshFragment;
+import com.schneewittchen.rosandroid.ui.fragments.robotarm.RobotarmFragment;
 
 import java.lang.String;
 
@@ -36,6 +38,8 @@ public class TabButton {
         2 : SettingsFragment
         3 : MasterFragment
         4 : SshFragment
+        5 : SmartHomeControlFragment
+        6 : RobotArmFragment
          */
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,8 +60,14 @@ public class TabButton {
                     case 4:
                         ft.replace(R.id.main_container, new SshFragment());
                         break;
+                    case 5:
+                        ft.replace(R.id.main_container, new SmartHomeControlFragment());
+                        break;
+                    case 6:
+                        ft.replace(R.id.main_container, new RobotarmFragment());
+                        break;
                     default:
-                        Log.e(TAG, "onClick: Fragment type invalid.");
+                        Log.e(TAG, "onClick: Fragment type invalid. Tried" + FragmentType);
                 }
                 ft.commit();
             }

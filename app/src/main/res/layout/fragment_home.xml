@@ -7,24 +7,11 @@
     android:background="#FFFFFF">
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/auto_nav4"
-        android:layout_width="109dp"
-        android:layout_height="109dp"
-        android:layout_marginStart="224dp"
-        android:layout_marginTop="464dp"
-        android:background="@drawable/round_button"
-        android:onClick="goToMapFragment"
-        app:
-        app:iconSize="75dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/auto_nav2"
         android:layout_width="109dp"
         android:layout_height="109dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="152dp"
+        android:layout_marginTop="184dp"
         android:background="@drawable/round_button"
         android:onClick="goToMapFragment"
         android:textColorLink="#1e90ff"
@@ -34,58 +21,72 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/auto_nav5"
+        android:id="@+id/auto_nav4"
         android:layout_width="109dp"
         android:layout_height="109dp"
-        android:layout_marginStart="224dp"
-        android:layout_marginTop="152dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="28dp"
         android:background="@drawable/round_button"
         android:onClick="goToMapFragment"
-        android:textColorLink="#FFEB3B"
-        app:icon="@drawable/gps"
         app:iconSize="75dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/auto_nav3"
         android:layout_width="109dp"
         android:layout_height="109dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="464dp"
+        android:layout_marginBottom="28dp"
         android:background="@drawable/round_button"
         android:onClick="goToMapFragment"
         app:iconSize="75dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/auto_nav"
         android:layout_width="200dp"
         android:layout_height="200dp"
-        android:layout_marginStart="80dp"
-        android:layout_marginTop="264dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
         android:background="@drawable/round_big_button"
         android:gravity="center_horizontal|top"
         android:onClick="goToMapFragment"
         app:iconSize="120dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/auto_nav2"
+        app:layout_constraintBottom_toTopOf="@id/auto_nav3"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/auto_nav5"
+        android:layout_width="109dp"
+        android:layout_height="109dp"
+        android:layout_marginTop="184dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/round_button"
+        android:onClick="goToMapFragment"
+        android:textColorLink="#FFEB3B"
+        app:icon="@drawable/gps"
+        app:iconSize="75dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/home_page_title"
-        android:layout_width="348dp"
-        android:layout_height="124dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="68dp"
-        android:fontFamily="arial"
+        android:layout_width="261dp"
+        android:layout_height="121dp"
+        android:layout_marginTop="28dp"
+        android:fontFamily="sans-serif-medium"
         android:gravity="left"
         android:lineSpacingExtra="-7dp"
-        android:text="Wheelchair Control"
+        android:text="Wheelchair Dashboard"
         android:textColor="#e2c239"
         android:textSize="40sp"
+        android:typeface="sans"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.746"
+        app:layout_constraintHorizontal_bias="0.323"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

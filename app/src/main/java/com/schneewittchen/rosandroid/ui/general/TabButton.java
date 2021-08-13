@@ -10,6 +10,7 @@ import androidx.fragment.app.FragmentManager;
 
 import com.schneewittchen.rosandroid.R;
 import com.schneewittchen.rosandroid.ui.fragments.home.HomeFragment;
+import com.schneewittchen.rosandroid.ui.fragments.manualControl.ManualControlFragment;
 import com.schneewittchen.rosandroid.ui.fragments.map.MapxusFragment;
 import com.schneewittchen.rosandroid.ui.fragments.master.MasterFragment;
 import com.schneewittchen.rosandroid.ui.fragments.settings.SettingsFragment;
@@ -65,6 +66,9 @@ public class TabButton {
                         break;
                     case 6:
                         ft.replace(R.id.main_container, new RobotarmFragment());
+                        break;
+                    case 7:
+                        ft.replace(R.id.main_container, new ManualControlFragment());
                         break;
                     default:
                         Log.e(TAG, "onClick: Fragment type invalid. Tried" + FragmentType);

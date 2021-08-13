@@ -125,4 +125,16 @@
         app:popUpTo="@id/main_navigation"
         app:popUpToInclusive="true" />
 
+    <fragment
+        android:id="@+id/manualControl"
+        android:name="com.schneewittchen.rosandroid.ui.fragments.manualControl.ManualControlFragment"
+        android:label="ManualControlFragment"
+        tools:layout="@layout/fragment_manual_control"/>
+
+    <action
+        android:id="@+id/action_to_manualControlFragment"
+        app:destination="@id/manualControl"
+        app:popUpTo="@id/main_navigation"
+        app:popUpToInclusive="true" />
+
 </navigation>

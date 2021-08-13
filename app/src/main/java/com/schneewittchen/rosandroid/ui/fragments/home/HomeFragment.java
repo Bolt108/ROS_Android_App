@@ -22,7 +22,7 @@ import com.schneewittchen.rosandroid.ui.general.TabButton;
 
 public class HomeFragment extends Fragment {
 
-    private static TabButton autoNav, settings, joystick, shc, robotArm;
+    private static TabButton autoNav, settings, joystick, shc, robotArm, manualControl;
 
     final public static String TAG = HomeFragment.class.getSimpleName();
 
@@ -40,6 +40,8 @@ public class HomeFragment extends Fragment {
         (shc = new TabButton(v.findViewById(R.id.shc))).linkToFragment(5, getParentFragmentManager().beginTransaction());
 
         (robotArm = new TabButton(v.findViewById(R.id.robotArm))).linkToFragment(6, getParentFragmentManager().beginTransaction());
+
+        (manualControl = new TabButton(v.findViewById(R.id.manualControl))).linkToFragment(7, getParentFragmentManager().beginTransaction());
 
         return v;
     }

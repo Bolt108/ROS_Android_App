@@ -29,6 +29,7 @@ import com.schneewittchen.rosandroid.viewmodel.SshViewModel;
 
 import java.util.Arrays;
 
+import com.schneewittchen.rosandroid.ui.general.TabButton;
 
 /**
  * TODO: Description
@@ -54,6 +55,7 @@ public class SshFragment extends Fragment implements TextView.OnEditorActionList
     private FloatingActionButton abortButton;
     private boolean connected;
 
+    private TabButton backButton;
 
     public static SshFragment newInstance() {
         return new SshFragment();
@@ -65,6 +67,8 @@ public class SshFragment extends Fragment implements TextView.OnEditorActionList
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         binding = FragmentSshBinding.inflate(inflater, container, false);
+        backButton = new TabButton(binding.getRoot().findViewById(R.id.ssh_back_button));
+        backButton.linkToFragment(2, getParentFragmentManager().beginTransaction());
         return binding.getRoot();
     }
 

@@ -97,5 +97,11 @@ public class MapxusFragment extends Fragment implements OnMapReadyCallback, OnMa
     public void onMapxusMapReady(MapxusMap mapxusMap) {
         this.mapxusMap = mapxusMap;
     }
+
+    @Override
+    public void onDestroyView() {
+        System.gc();
+        super.onDestroyView();
+    }
 }
 

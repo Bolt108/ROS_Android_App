@@ -13,6 +13,7 @@ import com.schneewittchen.rosandroid.ui.fragments.home.HomeFragment;
 import com.schneewittchen.rosandroid.ui.fragments.map.MapxusFragment;
 import com.schneewittchen.rosandroid.ui.fragments.master.MasterFragment;
 import com.schneewittchen.rosandroid.ui.fragments.settings.SettingsFragment;
+import com.schneewittchen.rosandroid.ui.fragments.ssh.SshFragment;
 
 import java.lang.String;
 
@@ -34,6 +35,7 @@ public class TabButton {
         1 : MapxusFragment
         2 : SettingsFragment
         3 : MasterFragment
+        4 : SshFragment
          */
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,6 +52,9 @@ public class TabButton {
                         break;
                     case 3:
                         ft.replace(R.id.main_container, new MasterFragment());
+                        break;
+                    case 4:
+                        ft.replace(R.id.main_container, new SshFragment());
                         break;
                     default:
                         Log.e(TAG, "onClick: Fragment type invalid.");

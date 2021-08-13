@@ -32,11 +32,7 @@ public class HomeFragment extends Fragment {
     public View onCreateView(@NonNull @NotNull LayoutInflater inflater, @Nullable @org.jetbrains.annotations.Nullable ViewGroup container, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_home, container, false);
         Log.d(TAG, "onCreateView: HOMEFRAGMENT CREATED. DICK AND BALLS INCL UDED. ");
-        auto_nav = new TabButton(v.findViewById(R.id.auto_nav));
-        auto_nav.linkToFragment(1, getParentFragmentManager().beginTransaction());
 
-        settings = new TabButton(v.findViewById(R.id.settings));
-        settings.linkToFragment(2, getParentFragmentManager().beginTransaction());
         
         return v;
     }

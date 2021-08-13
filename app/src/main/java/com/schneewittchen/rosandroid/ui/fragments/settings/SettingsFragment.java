@@ -20,6 +20,9 @@ import com.schneewittchen.rosandroid.ui.general.TabButton;
 
 public class SettingsFragment extends Fragment {
 
+    private Button languageButton;
+    private boolean chinese = false;
+
     @Nullable
     @org.jetbrains.annotations.Nullable
     @Override
@@ -34,6 +37,20 @@ public class SettingsFragment extends Fragment {
 
         TabButton sshButton = new TabButton(v .findViewById(R.id.ssh_button));
         sshButton.linkToFragment(4, getParentFragmentManager().beginTransaction());
+
+        languageButton = v.findViewById(R.id.language_button);
+        languageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                chinese = !chinese;
+
+                if (chinese) {
+                    // Switch language to Chinese
+                } else {
+                    // Switch language to English
+                }
+            }
+        });
 
         return v;
     }
